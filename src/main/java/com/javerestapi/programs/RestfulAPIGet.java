@@ -9,7 +9,6 @@ import java.net.URL;
 
 public class RestfulAPIGet {
 
-	// http://localhost:8080/RESTfulExample/json/product/get
 	public static void main(String[] args) {
 		
 		String urlPath = args[0];
@@ -26,12 +25,12 @@ public class RestfulAPIGet {
 					+ conn.getResponseCode());
 		}
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(
+		BufferedReader bufferReader = new BufferedReader(new InputStreamReader(
 			(conn.getInputStream())));
 
 		String output;
 		System.out.println("Output from Server .... \n");
-		while ((output = br.readLine()) != null) {
+		while ((output = bufferReader.readLine()) != null) {
 			System.out.println(output);
 		}
 

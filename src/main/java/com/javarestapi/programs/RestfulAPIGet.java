@@ -44,8 +44,9 @@ public class RestfulAPIGet {
 
 		e.printStackTrace();
 
-	  }
+	  } catch (Exception e) {
 
+	 	e.printStackTrace();
 	}
-
+ }
 }

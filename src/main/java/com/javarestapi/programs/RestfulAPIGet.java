@@ -29,7 +29,7 @@ public class RestfulAPIGet {
 			(conn.getInputStream())));
 
 		String output;
-		System.out.println("Output from Server .... \n");
+		System.out.println("Server Response .... \n");
 		while ((output = bufferReader.readLine()) != null) {
 			System.out.println(output);
 		}

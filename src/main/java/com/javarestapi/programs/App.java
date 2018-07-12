@@ -1,4 +1,4 @@
-package com.javerestapi.programs;
+package com.javarestapi.programs;
 
 /**
  * Hello world!

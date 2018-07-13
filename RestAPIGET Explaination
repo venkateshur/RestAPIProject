@@ -1,0 +1,12 @@
+Tested Rest API using java.net.url
+Imported all the required packages
+Passing the testing url through argument
+created URl object and passed the url, which is from java.net.URL
+created HttpURL connection object and open the conenction
+set method("GET"), request property(which accepts json data)
+check for the status code, if not equal to 200, throwing the run time exception and priting the response code
+If the status code 200, created bufferreader to read input stream data
+created while loop to print the outptu put to console until null found(no record in the buffer)
+Disconnected the connection after all processing
+All thr above process put it in try block to handle expcetion
+given multiple catche block to handle different exceptions.

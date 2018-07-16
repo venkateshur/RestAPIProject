@@ -1,0 +1,63 @@
+package com.javarestapi.programs;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class RestfulAPIGet {
+
+	public static void main(String[] args) {
+		
+		String urlPath = args[0];
+		int numberOfLines = Integer.parseInt(args[1]);
+		int numberOfFieldsForEachLine = Integer.parseInt(args[2]);
+
+	  try {
+
+		URL url = new URL(urlPath);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+	//	conn.setRequestProperty("Accept", "application/json");
+		conn.setRequestProperty("Content-Type", "csv/text;charset=iso-8859-1");
+	 	
+		if (conn.getResponseCode() != 200) {
+			throw new RuntimeException("Failed : HTTP error code : "
+					+ conn.getResponseCode());
+		}
+
+		BufferedReader bufferReader = new BufferedReader(new InputStreamReader(
+			(conn.getInputStream())));
+
+		String output;
+		int count = 0;
+		System.out.println("Server Response .... \n");
+		while ((output = bufferReader.readLine()) != null) {
+			count += 1;
+			 String [] arrOfStr = output.split(",");
+			 if(output.split(",").length != numberOfFieldsForEachLine) {
+			 System.out.println("linenumber:" + count + "-->" + "number_of_fields:" + arrOfStr.length);
+			 }
+	//		 System.out.println(output);
+			
+		}
+		if(count != numberOfLines) {
+		   System.out.println("Actually_Count:" + count + "-->" + "Expected_Count:" + numberOfLines);}
+		conn.disconnect();
+
+	  } catch (MalformedURLException e) {
+
+		e.printStackTrace();
+
+	  } catch (IOException e) {
+
+		e.printStackTrace();
+
+	  } catch (Exception e) {
+
+	 	e.printStackTrace();
+	}
+ }
+}
